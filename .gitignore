@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Claude
+settings.local.json
+
+# Xcode
+xcuserdata/
+DerivedData/
+
+# Swift Package Manager
+.build/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+Packages/
+Package.resolved
+
+# Axeptio
+build/
