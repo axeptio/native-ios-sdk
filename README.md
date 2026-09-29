@@ -1,5 +1,7 @@
 # Axeptio iOS SDK
 
+[![Latest release](https://img.shields.io/github/v/release/axeptio/native-ios-sdk)](https://github.com/axeptio/native-ios-sdk/releases) [![License](https://img.shields.io/badge/license-Axeptio-blue.svg)](LICENSE) [![Swift](https://img.shields.io/badge/Swift-5.9%2B-orange)](https://swift.org) [![iOS](https://img.shields.io/badge/iOS-17%2B-blue)](https://developer.apple.com/ios/)
+
 Collect and manage user consents natively in your iOS app. The SDK provides a complete, remotely configured consent experience - cookie consents and system permissions - in a single screen flow. Consents are stored on the device and synced with the Axeptio backend.
 
 ## Features
@@ -37,7 +39,7 @@ Add the package to your `dependencies`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/axeptio/native-ios-sdk.git", from: "1.0.0"),
+    .package(url: "https://github.com/axeptio/native-ios-sdk.git", from: "1.1.0-beta.1"),
 ],
 ```
 
@@ -150,3 +152,13 @@ For a complete integration - including permission requests, the consents-updated
 3. Select a simulator (or your device) and press **Run** (⌘R).
 
 The example references the SDK as a local Swift package, so Xcode resolves it automatically - no extra setup required.
+
+## Support
+
+For integration questions, bug reports or feature requests, contact Axeptio support at
+**support@axeptio.eu** or visit the [help centre](https://support.axeptio.eu). Release notes are on the
+[releases page](https://github.com/axeptio/native-ios-sdk/releases). To report a security vulnerability, see [SECURITY.md](SECURITY.md).
+
+## License
+
+The Axeptio iOS SDK is distributed under Axeptio's licensing terms — see [LICENSE](LICENSE).

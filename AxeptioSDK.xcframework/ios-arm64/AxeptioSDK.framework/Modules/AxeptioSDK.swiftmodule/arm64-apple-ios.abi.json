@@ -7471,54 +7471,54 @@
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/UIComponents\/PermissionButton.swift",
       "kind": "BooleanLiteral",
-      "offset": 1164,
+      "offset": 1010,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/UIComponents\/PermissionButton.swift",
       "kind": "FloatLiteral",
-      "offset": 1190,
+      "offset": 1036,
       "length": 4,
       "value": "32.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/UIComponents\/PermissionButton.swift",
       "kind": "FloatLiteral",
-      "offset": 1298,
+      "offset": 1144,
       "length": 4,
       "value": "16.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/UIComponents\/PermissionButton.swift",
       "kind": "FloatLiteral",
-      "offset": 1371,
+      "offset": 1217,
       "length": 4,
       "value": "16.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/UIComponents\/PermissionButton.swift",
       "kind": "StringLiteral",
-      "offset": 1419,
+      "offset": 1265,
       "length": 18,
       "value": "\"Only when in use\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/UIComponents\/PermissionButton.swift",
       "kind": "FloatLiteral",
-      "offset": 1464,
+      "offset": 1310,
       "length": 4,
       "value": "16.0"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/UIComponents\/PermissionButton.swift",
       "kind": "FloatLiteral",
-      "offset": 1536,
+      "offset": 1382,
       "length": 4,
       "value": "16.0"
     },
     {
-      "filePath": "@__swiftmacro_10AxeptioSDK0027PermissionButtonswift_ovFAhfMX44_0_33_219BC562C867E498111612F747A8F215Ll7PreviewfMf_.swift",
+      "filePath": "@__swiftmacro_10AxeptioSDK0027PermissionButtonswift_ovFAhfMX36_0_33_219BC562C867E498111612F747A8F215Ll7PreviewfMf_.swift",
       "kind": "BooleanLiteral",
       "offset": 636,
       "length": 4,
