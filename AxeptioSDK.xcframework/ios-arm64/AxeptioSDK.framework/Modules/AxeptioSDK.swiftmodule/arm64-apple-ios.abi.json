@@ -8233,8 +8233,15 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Repositories\/AnalyticsRepository.swift",
+      "kind": "Dictionary",
+      "offset": 1867,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Repositories\/AnalyticsRepository.swift",
       "kind": "Array",
-      "offset": 1713,
+      "offset": 1961,
       "length": 2,
       "value": "[]"
     },

@@ -25,14 +25,18 @@ struct ContentView: View {
                     }
                 }
                 .task {
+                    // Listening starts before initialize, which reports some errors right away.
+                    eventLog.startListening()
+                    defer { eventLog.stopListening() }
+                    async let statuses: Void = eventLog.followConsentStatus()
+
                     await initializeSDK()
 
                     if await Axeptio.shared.shouldDisplayConsents {
                         sdkEntryPoint = .cookieAndAttOnly
                     }
-                }
-                .task {
-                    await eventLog.follow()
+
+                    await statuses
                 }
                 .onChange(of: configuration) {
                     Task { await initializeSDK() }

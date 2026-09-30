@@ -24,12 +24,18 @@ final class EventLog {
         listener.onError = { [weak self] in self?.append("Error: \($0.localizedDescription)") }
     }
 
-    /// Logs every consent status and listener callback until the calling task is cancelled.
-    /// The listener is registered only meanwhile: the SDK keeps listeners until they're removed.
-    func follow() async {
+    /// Registers the listener; call it before `initialize` so its first errors are logged too,
+    /// and pair it with ``stopListening()``: the SDK keeps listeners until they're removed.
+    func startListening() {
         Axeptio.shared.setEventListener(listener)
-        defer { Axeptio.shared.removeEventListener(listener) }
+    }
 
+    func stopListening() {
+        Axeptio.shared.removeEventListener(listener)
+    }
+
+    /// Logs every consent status until the calling task is cancelled.
+    func followConsentStatus() async {
         for await status in Axeptio.shared.consentStatus {
             append("Consent status: \(status)")
         }
