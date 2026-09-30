@@ -1,8 +1,9 @@
+# .gitignore of the public distribution repo (axeptio/native-ios-sdk),
+# shipped by scripts/assemble-public-package.sh. The sources' own .gitignore
+# carries internal tooling entries that must not be published.
+
 # macOS
 .DS_Store
-
-# Claude
-settings.local.json
 
 # Xcode
 xcuserdata/
@@ -10,10 +11,6 @@ DerivedData/
 
 # Swift Package Manager
 .build/
-.swiftpm/configuration/registries.json
-.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.swiftpm/
 Packages/
 Package.resolved
-
-# Axeptio
-build/

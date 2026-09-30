@@ -1,4 +1,8 @@
-# Axeptio iOS SDK
+<img alt="Axeptio Native iOS SDK" src="https://github.com/user-attachments/assets/5799ac86-5d77-4a9e-9bdf-36d40881a449" width="600" height="300"/>
+
+# Axeptio Native iOS SDK
+
+[![Latest release](https://img.shields.io/github/v/release/axeptio/native-ios-sdk)](https://github.com/axeptio/native-ios-sdk/releases) [![License](https://img.shields.io/badge/license-Axeptio-blue.svg)](LICENSE) [![Swift](https://img.shields.io/badge/Swift-5.9%2B-orange)](https://swift.org) [![iOS](https://img.shields.io/badge/iOS-17%2B-blue)](https://developer.apple.com/ios/)
 
 Collect and manage user consents natively in your iOS app. The SDK provides a complete, remotely configured consent experience - cookie consents and system permissions - in a single screen flow. Consents are stored on the device and synced with the Axeptio backend.
 
@@ -9,6 +13,7 @@ Collect and manage user consents natively in your iOS app. The SDK provides a co
 - **System permissions** - request App Tracking Transparency, notifications, camera and more from one configurable flow.
 - **Persistent syncing** - the device is the source of truth. Unsynced consents retry automatically on the next launch.
 - **Consent state at hand** - check whether the flow should be shown, read the TC string and per-vendor consents, get notified when consents change.
+- **Events** - stream the consent status with `async`/`await`, or register an `AxeptioEventListener` as with the WebView SDK.
 - **26 languages** built in.
 
 ## Requirements
@@ -37,7 +42,7 @@ Add the package to your `dependencies`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/axeptio/native-ios-sdk.git", from: "1.0.0"),
+    .package(url: "https://github.com/axeptio/native-ios-sdk.git", from: "1.1.0"),
 ],
 ```
 
@@ -132,6 +137,75 @@ To react to changes as they happen, pass an `onConsentsUpdated` closure to `init
 
 The `onError` closure you pass to `initialize` receives an `AxeptioError` whenever the SDK hits a problem during any flow - missing Info.plist keys, configuration issues, network failures. Every error is also logged to the Xcode console.
 
+### Listening to SDK events
+
+`consentStatus` streams where the SDK stands: the current status first, then every change. The states are the same as the Android SDK's `consentStatusFlow`:
+
+```swift
+.task {
+    for await status in Axeptio.shared.consentStatus {
+        switch status {
+        case .ready(let shouldDisplayConsents):
+            showConsents = shouldDisplayConsents // first time, or consent expired
+        case .notInitialized:
+            break // initialize hasn't finished yet
+        case .configFetchFailed:
+            break // the error went to onError; initialize again to retry
+        }
+    }
+}
+```
+
+To get callbacks instead, register an `AxeptioEventListener`, as with the WebView SDK. Set only the closures you need; they run on the main actor:
+
+```swift
+let listener = AxeptioEventListener()
+listener.onPopupClosedEvent = { /* the consent flow went away */ }
+listener.onConsentsUpdated = { /* read the new values from Axeptio.shared */ }
+listener.onError = { error in /* same errors as initialize's onError */ }
+Axeptio.shared.setEventListener(listener)
+// Later: Axeptio.shared.removeEventListener(listener)
+```
+
+`onPopupClosedEvent` fires once per presented consent flow, when it goes away: finished, dismissed early, or swiped down. That applies whether the flow was shown with `makeConsentFlow`, `presentConsentFlow` or `RootView`.
+
+## Network and data collected
+
+The SDK's API requests go over HTTPS to `https://headless-api.axeptio.tech`, or `https://staging-api.axeptio.tech` when initialized with `environment: .staging`. The images shown on the consent screens (hero illustration, vendor and category icons) are downloaded separately, from whatever hosts your Axeptio configuration references.
+
+| Purpose | What is sent |
+| --- | --- |
+| Configuration | Project ID, configuration ID, app version, device language |
+| Consent records | The user's vendor choices, the Axeptio user token and configuration ID |
+| TCF | Vendor list and TC string encoding requests (Publisher flow) |
+| Usage analytics | Consent-flow events (see below) with timestamp, app name and bundle id, a Safari-like user agent, the Axeptio user token, project and configuration IDs, and the vendor choices |
+
+The Axeptio user token is a random identifier that Axeptio's backend creates for the consent record. The SDK doesn't read the advertising identifier.
+
+**Analytics** use the same events as the WebView and Android SDKs:
+- `app:open`, `app:close`
+- `cookies:open`, `cookies:close`
+- `cookies:consent:accept`, `cookies:consent:reject`, `cookies:consent:partial`
+- `cookies:vendors:toggle:on|off` and `cookies:vendors:toggleall:on|off`
+- `app:att:authorized|denied`
+
+As in the WebView SDK:
+- Events are sent only once the user has authorized App Tracking Transparency.
+- Until then, only the ATT answer itself is sent; the other events wait on the device, up to 500.
+- If tracking is denied, those events are deleted.
+
+The SDK ships a privacy manifest (`PrivacyInfo.xcprivacy`) declaring product-interaction data collected for analytics, not linked to the user and not used for tracking.
+
+## Migrating from the WebView SDK: events
+
+| WebView SDK (`AxeptioSDK`) | Native SDK (this repository) |
+| --- | --- |
+| `setEventListener` / `removeEventListener` | Same names, with an `AxeptioEventListener` |
+| `onPopupClosedEvent` | `onPopupClosedEvent` |
+| `onError` (`String`) | `onError` (`AxeptioError`) |
+| Consent saved | `onConsentsUpdated`, or `consentStatus` becoming `.ready(shouldDisplayConsents: false)` |
+| `onGoogleConsentModeUpdate`, `onConsentCleared`, `onConfigServed`, `onCookiesVersionChanged`, `onCMPRestored` | Not supported yet |
+
 ## Localization
 
 The SDK is localized in **26 languages**: English plus Bulgarian, Croatian, Czech, Danish, Dutch, Estonian, Finnish, French, German, Greek, Hungarian, Irish, Italian, Latvian, Lithuanian, Maltese, Norwegian Bokmål, Polish, Portuguese (Portugal), Romanian, Russian, Slovak, Slovenian, Spanish, and Swedish.
@@ -140,7 +214,7 @@ The SDK is localized in **26 languages**: English plus Bulgarian, Croatian, Czec
 
 ## Example App
 
-For a complete integration - including permission requests, the consents-updated callback and reading consent values - see the example app:
+For a complete integration - including permission requests, an event log of `consentStatus` and an `AxeptioEventListener`, and reading consent values - see the example app:
 
 1. Clone this repository:
    ```sh
@@ -150,3 +224,13 @@ For a complete integration - including permission requests, the consents-updated
 3. Select a simulator (or your device) and press **Run** (⌘R).
 
 The example references the SDK as a local Swift package, so Xcode resolves it automatically - no extra setup required.
+
+## Support
+
+For integration questions, bug reports or feature requests, contact Axeptio support at
+**support@axeptio.eu** or visit the [help centre](https://support.axeptio.eu). Release notes are on the
+[releases page](https://github.com/axeptio/native-ios-sdk/releases). To report a security vulnerability, see [SECURITY.md](SECURITY.md).
+
+## License
+
+The Axeptio iOS SDK is distributed under Axeptio's licensing terms — see [LICENSE](LICENSE).

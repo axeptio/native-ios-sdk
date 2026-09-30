@@ -10,6 +10,7 @@ struct ContentView: View {
 
     @State private var showConfigurationModal = false
     @State private var sdkEntryPoint: RootEntryPointType?
+    @State private var eventLog = EventLog()
 
     var body: some View {
         NavigationStack {
@@ -29,6 +30,9 @@ struct ContentView: View {
                     if await Axeptio.shared.shouldDisplayConsents {
                         sdkEntryPoint = .cookieAndAttOnly
                     }
+                }
+                .task {
+                    await eventLog.follow()
                 }
                 .onChange(of: configuration) {
                     Task { await initializeSDK() }
@@ -52,6 +56,12 @@ struct ContentView: View {
                 getCell(for: .openPermissionsFlow)
             } header: {
                 Text("Flows")
+            }
+
+            Section {
+                EventLogView(log: eventLog)
+            } header: {
+                Text("Events")
             }
         }
         .listStyle(.plain)

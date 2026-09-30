@@ -11,6 +11,7 @@ import CoreGraphics
 import CoreLocation
 import CoreMotion
 import CoreText
+import CryptoKit
 import DeveloperToolsSupport
 import EventKit
 import FamilyControls
@@ -37,6 +38,9 @@ import _SwiftConcurrencyShims
   @_Concurrency.MainActor final public var shouldDisplayConsents: Swift.Bool {
     get async
   }
+  @_Concurrency.MainActor final public var consentStatus: _Concurrency.AsyncStream<AxeptioSDK.ConsentStatus> {
+    get
+  }
   @_Concurrency.MainActor final public var axeptioToken: Swift.String? {
     get
   }
@@ -53,7 +57,22 @@ import _SwiftConcurrencyShims
   @_Concurrency.MainActor final public func makeConsentFlow(for entryPoint: AxeptioSDK.RootEntryPointType) -> some SwiftUICore.View
   
   @_Concurrency.MainActor final public func presentConsentFlow(from presentingViewController: UIKit.UIViewController, for entryPoint: AxeptioSDK.RootEntryPointType)
+  @_Concurrency.MainActor final public func setEventListener(_ listener: AxeptioSDK.AxeptioEventListener)
+  @_Concurrency.MainActor final public func removeEventListener(_ listener: AxeptioSDK.AxeptioEventListener)
   @objc deinit
+}
+@_Concurrency.MainActor final public class AxeptioEventListener {
+  @_Concurrency.MainActor final public var onPopupClosedEvent: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onConsentsUpdated: (() -> Swift.Void)?
+  @_Concurrency.MainActor final public var onError: ((AxeptioSDK.AxeptioError) -> Swift.Void)?
+  @_Concurrency.MainActor public init()
+  @objc deinit
+}
+public enum ConsentStatus : Swift.Sendable, Swift.Equatable {
+  case ready(shouldDisplayConsents: Swift.Bool)
+  case notInitialized
+  case configFetchFailed
+  public static func == (a: AxeptioSDK.ConsentStatus, b: AxeptioSDK.ConsentStatus) -> Swift.Bool
 }
 public enum CookieFlowType : Swift.String, Swift.Sendable, Swift.Identifiable, Swift.CaseIterable {
   case brands
@@ -220,6 +239,7 @@ public enum SDKEnvironment : Swift.String, Swift.Sendable, Swift.Identifiable, S
 
 
 extension AxeptioSDK.Axeptio : Swift.Sendable {}
+extension AxeptioSDK.AxeptioEventListener : Swift.Sendable {}
 extension AxeptioSDK.CookieFlowType : Swift.Equatable {}
 extension AxeptioSDK.CookieFlowType : Swift.Hashable {}
 extension AxeptioSDK.CookieFlowType : Swift.RawRepresentable {}
