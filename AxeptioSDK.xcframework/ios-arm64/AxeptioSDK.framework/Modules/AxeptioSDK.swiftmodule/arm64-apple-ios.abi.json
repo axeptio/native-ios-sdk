@@ -6923,7 +6923,7 @@
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Axeptio.swift",
       "kind": "IntegerLiteral",
-      "offset": 6230,
+      "offset": 6374,
       "length": 3,
       "value": "190"
     },
@@ -7628,6 +7628,34 @@
       "value": "9999"
     },
     {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Models\/Domain\/Cookie\/Publisher\/TCFConsentSelection.swift",
+      "kind": "Array",
+      "offset": 655,
+      "length": 15,
+      "value": "[1, 3, 4, 5, 6]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Models\/Domain\/Cookie\/Publisher\/TCFConsentSelection.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1323,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Models\/Domain\/Cookie\/Publisher\/TCFConsentSelection.swift",
+      "kind": "Array",
+      "offset": 1358,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Models\/Domain\/Cookie\/Publisher\/TCFConsentSelection.swift",
+      "kind": "Array",
+      "offset": 1397,
+      "length": 2,
+      "value": "[]"
+    },
+    {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Models\/Domain\/HeroModel.swift",
       "kind": "StringLiteral",
       "offset": 195,
@@ -7756,7 +7784,7 @@
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Models\/Response\/Publisher\/TCFResponse.swift",
       "kind": "StringLiteral",
-      "offset": 1394,
+      "offset": 2094,
       "length": 5,
       "value": "\"_id\""
     },
@@ -8239,7 +8267,7 @@
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Reporters\/ConsentStatusReporter.swift",
       "kind": "Dictionary",
-      "offset": 498,
+      "offset": 599,
       "length": 3,
       "value": "[]"
     },
@@ -8309,9 +8337,16 @@
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Repositories\/CookieRepository.swift",
       "kind": "Array",
-      "offset": 662,
+      "offset": 735,
       "length": 2,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Repositories\/CookieRepository.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5639,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Repositories\/PermissionsRepository.swift",
@@ -8358,77 +8393,98 @@
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 432,
+      "offset": 436,
+      "length": 21,
+      "value": "\"publisherAcceptsAll\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
+      "kind": "StringLiteral",
+      "offset": 499,
+      "length": 21,
+      "value": "\"publisherCmpVersion\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
+      "kind": "StringLiteral",
+      "offset": 558,
       "length": 16,
       "value": "\"brandsConfigId\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 494,
+      "offset": 620,
       "length": 25,
       "value": "\"brandsAcceptedVendorIds\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 567,
+      "offset": 688,
+      "length": 22,
+      "value": "\"brandsShownVendorIds\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
+      "kind": "StringLiteral",
+      "offset": 758,
       "length": 26,
       "value": "\"consentTimestampConfigId\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 634,
+      "offset": 825,
       "length": 20,
       "value": "\"consentSubmittedAt\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 694,
+      "offset": 885,
       "length": 18,
       "value": "\"unsyncedConfigId\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 750,
+      "offset": 941,
       "length": 16,
       "value": "\"vendorConsents\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 811,
+      "offset": 1002,
       "length": 24,
       "value": "\"vendorConsentsFlowType\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 1224,
+      "offset": 1491,
       "length": 3,
       "value": "190"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 1274,
+      "offset": 1541,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 1279,
+      "offset": 1546,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 1284,
+      "offset": 1551,
       "length": 2,
       "value": "24"
     },

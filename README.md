@@ -42,7 +42,7 @@ Add the package to your `dependencies`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/axeptio/native-ios-sdk.git", from: "1.2.0"),
+    .package(url: "https://github.com/axeptio/native-ios-sdk.git", from: "1.3.0"),
 ],
 ```
 
@@ -125,7 +125,7 @@ The flow advances through its steps and dismisses itself when done.
 | Property | Description |
 | --- | --- |
 | `isInitialized` | `true` once the SDK has finished loading its data. |
-| `shouldDisplayConsents` | Whether the consent flow should be presented (`async`). |
+| `shouldDisplayConsents` | Whether the consent flow should be presented (`async`): no consent yet, an expired one (190 days), or a configuration with "ask for a new consent" on that changed since (a new vendor, or a new CMP version for TCF). |
 | `axeptioToken` | The token identifying this user on the Axeptio backend. |
 | `tcString` | The IAB TC string, also stored as `IABTCF_TCString` in `UserDefaults`. |
 | `brandsVendorConsents` | Brands vendor consents, keyed by vendor name. |
@@ -153,7 +153,7 @@ The `onError` closure you pass to `initialize` receives an `AxeptioError` whenev
     for await status in Axeptio.shared.consentStatus {
         switch status {
         case .ready(let shouldDisplayConsents):
-            showConsents = shouldDisplayConsents // first time, or consent expired
+            showConsents = shouldDisplayConsents // first time, expired, or the configuration asks again
         case .notInitialized:
             break // initialize hasn't finished yet
         case .configFetchFailed:
