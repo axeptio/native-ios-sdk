@@ -41,7 +41,11 @@ final class EventLog {
         }
     }
 
+    /// Keeps the newest entries only: the whole log is one list row, rendered at once.
     private func append(_ message: String) {
         entries.insert(Entry(message: message), at: 0)
+        entries = Array(entries.prefix(Self.maxEntries))
     }
+
+    private static let maxEntries = 50
 }

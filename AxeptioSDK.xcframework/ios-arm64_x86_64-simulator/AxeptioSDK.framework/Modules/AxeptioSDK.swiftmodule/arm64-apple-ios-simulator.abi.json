@@ -534,6 +534,60 @@
           },
           {
             "kind": "Function",
+            "name": "getRemainingDaysForConsent",
+            "printedName": "getRemainingDaysForConsent(ttlDays:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "hasDefaultArg": true,
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10AxeptioSDK0A0C26getRemainingDaysForConsent03ttlE0S2i_tYaF",
+            "mangledName": "$s10AxeptioSDK0A0C26getRemainingDaysForConsent03ttlE0S2i_tYaF",
+            "moduleName": "AxeptioSDK",
+            "declAttributes": [
+              "Final",
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "clearConsentData",
+            "printedName": "clearConsentData()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10AxeptioSDK0A0C16clearConsentDatayyF",
+            "mangledName": "$s10AxeptioSDK0A0C16clearConsentDatayyF",
+            "moduleName": "AxeptioSDK",
+            "declAttributes": [
+              "Custom",
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "initialize",
             "printedName": "initialize(with:permissions:onConsentsUpdated:onError:)",
             "children": [
@@ -6867,6 +6921,13 @@
       "value": "\"unable to find bundle named AxeptioSDK_AxeptioSDK\""
     },
     {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Axeptio.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6230,
+      "length": 3,
+      "value": "190"
+    },
+    {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Enums\/AnalyticsEventType.swift",
       "kind": "StringLiteral",
       "offset": 263,
@@ -8331,29 +8392,43 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
+      "kind": "StringLiteral",
+      "offset": 750,
+      "length": 16,
+      "value": "\"vendorConsents\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
+      "kind": "StringLiteral",
+      "offset": 811,
+      "length": 24,
+      "value": "\"vendorConsentsFlowType\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 777,
+      "offset": 1224,
       "length": 3,
       "value": "190"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 827,
+      "offset": 1274,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 832,
+      "offset": 1279,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 837,
+      "offset": 1284,
       "length": 2,
       "value": "24"
     },

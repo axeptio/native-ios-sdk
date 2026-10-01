@@ -42,7 +42,7 @@ Add the package to your `dependencies`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/axeptio/native-ios-sdk.git", from: "1.1.2"),
+    .package(url: "https://github.com/axeptio/native-ios-sdk.git", from: "1.2.0"),
 ],
 ```
 
@@ -130,8 +130,15 @@ The flow advances through its steps and dismisses itself when done.
 | `tcString` | The IAB TC string, also stored as `IABTCF_TCString` in `UserDefaults`. |
 | `brandsVendorConsents` | Brands vendor consents, keyed by vendor name. |
 | `tcfVendorConsents` | TCF vendor consents, keyed by vendor id. |
+| `getRemainingDaysForConsent(ttlDays:)` | Days before the consent expires (`async`): negative once expired, `ttlDays` (default 190) when there's none. Offline, counts from the last consent on the device. |
+
+The vendor consents are saved on the device, so they're available before the SDK has loaded, and when it can't load (offline).
 
 To react to changes as they happen, pass an `onConsentsUpdated` closure to `initialize` - it's called whenever the consent state on the device changes, with all the values above already up to date.
+
+### Clearing the consent
+
+`Axeptio.shared.clearConsentData()` forgets the user's choices on this device, `IABTCF_*` values included, and keeps `axeptioToken`. `shouldDisplayConsents` becomes `true`: `consentStatus` reports it once the SDK is initialized, and `onConsentsUpdated` and the event listeners are called. Use it for a "reset my choices" setting or on sign-out.
 
 ### Handling errors
 
@@ -196,10 +203,12 @@ As in the WebView SDK:
 
 The SDK ships a privacy manifest (`PrivacyInfo.xcprivacy`) declaring product-interaction data collected for analytics, not linked to the user and not used for tracking.
 
-## Migrating from the WebView SDK: events
+## Migrating from the WebView SDK
 
 | WebView SDK (`AxeptioSDK`) | Native SDK (this repository) |
 | --- | --- |
+| `clearConsent()` | `clearConsentData()` |
+| `getRemainingDaysForConsent()` | `await getRemainingDaysForConsent()`: negative once expired, 190 when there's no consent (the WebView SDK returned 0) |
 | `setEventListener` / `removeEventListener` | Same names, with an `AxeptioEventListener` |
 | `onPopupClosedEvent` | `onPopupClosedEvent` |
 | `onError` (`String`) | `onError` (`AxeptioError`) |

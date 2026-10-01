@@ -53,6 +53,8 @@ import _SwiftConcurrencyShims
   @_Concurrency.MainActor final public var tcfVendorConsents: [Swift.String : Swift.Bool] {
     get
   }
+  @_Concurrency.MainActor final public func getRemainingDaysForConsent(ttlDays: Swift.Int = 190) async -> Swift.Int
+  @_Concurrency.MainActor final public func clearConsentData()
   @_Concurrency.MainActor final public func initialize(with configuration: AxeptioSDK.LocalConfigurationModel, permissions: [AxeptioSDK.PermissionRequest], onConsentsUpdated: (() -> Swift.Void)?, onError: @escaping (AxeptioSDK.AxeptioError) -> Swift.Void) async
   @_Concurrency.MainActor final public func makeConsentFlow(for entryPoint: AxeptioSDK.RootEntryPointType) -> some SwiftUICore.View
   

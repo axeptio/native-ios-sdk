@@ -11,6 +11,8 @@ struct ContentView: View {
     @State private var showConfigurationModal = false
     @State private var sdkEntryPoint: RootEntryPointType?
     @State private var eventLog = EventLog()
+    @State private var remainingDays: Int?
+    @State private var vendorsSummary = ""
 
     var body: some View {
         NavigationStack {
@@ -35,14 +37,18 @@ struct ContentView: View {
                     if await Axeptio.shared.shouldDisplayConsents {
                         sdkEntryPoint = .cookieAndAttOnly
                     }
+                    await refreshConsentValues()
 
                     await statuses
                 }
                 .onChange(of: configuration) {
-                    Task { await initializeSDK() }
+                    Task {
+                        await initializeSDK()
+                        await refreshConsentValues()
+                    }
                 }
         }
-        .fullScreenCover(item: $sdkEntryPoint) {
+        .fullScreenCover(item: $sdkEntryPoint, onDismiss: { Task { await refreshConsentValues() } }) {
             RootView(entryPoint: $0)
         }
         .sheet(isPresented: $showConfigurationModal) {
@@ -63,6 +69,17 @@ struct ContentView: View {
             }
 
             Section {
+                LabeledContent("Days before consent expires", value: remainingDays.map { "\($0) days" } ?? "…")
+                LabeledContent("Vendors", value: vendorsSummary)
+                Button("Clear consent data", role: .destructive) {
+                    Axeptio.shared.clearConsentData()
+                    Task { await refreshConsentValues() }
+                }
+            } header: {
+                Text("Consent")
+            }
+
+            Section {
                 EventLogView(log: eventLog)
             } header: {
                 Text("Events")
@@ -76,6 +93,24 @@ struct ContentView: View {
             type: type,
             didTapCell: { sdkEntryPoint = type.entryPoint }
         )
+    }
+
+    /// Re-reads the consent values; they're saved on the device, so they show even when loading
+    /// failed (offline).
+    private func refreshConsentValues() async {
+        remainingDays = await Axeptio.shared.getRemainingDaysForConsent()
+
+        let consents = Axeptio.shared.brandsVendorConsents.isEmpty
+            ? Axeptio.shared.tcfVendorConsents
+            : Axeptio.shared.brandsVendorConsents
+        let accepted = consents.values.filter { $0 }.count
+
+        vendorsSummary = switch accepted {
+        case _ where consents.isEmpty: "No consent saved"
+        case consents.count: "All accepted"
+        case 0: "None accepted"
+        default: "\(accepted) of \(consents.count) accepted"
+        }
     }
 
     private func initializeSDK() async {
