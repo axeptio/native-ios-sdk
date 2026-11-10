@@ -22,6 +22,18 @@ final class EventLog {
         listener.onPopupClosedEvent = { [weak self] in self?.append("Consent flow closed") }
         listener.onConsentsUpdated = { [weak self] in self?.append("Consents updated") }
         listener.onError = { [weak self] in self?.append("Error: \($0.localizedDescription)") }
+        listener.onGoogleConsentModeUpdate = { [weak self] in
+            self?.append("Google consent: \(Self.describe($0))")
+        }
+    }
+
+    static func describe(_ consent: GoogleConsentV2) -> String {
+        func letter(_ status: GoogleConsentStatus) -> String {
+            status == .granted ? "G" : "D"
+        }
+
+        return "analytics=\(letter(consent.analyticsStorage)) ad_storage=\(letter(consent.adStorage)) "
+            + "ad_user_data=\(letter(consent.adUserData)) ad_personalization=\(letter(consent.adPersonalization))"
     }
 
     /// Registers the listener; call it before `initialize` so its first errors are logged too,
