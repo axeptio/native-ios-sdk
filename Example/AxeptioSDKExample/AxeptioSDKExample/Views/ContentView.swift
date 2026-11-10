@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var eventLog = EventLog()
     @State private var remainingDays: Int?
     @State private var vendorsSummary = ""
+    @State private var googleConsentMode = ""
 
     var body: some View {
         NavigationStack {
@@ -71,6 +72,7 @@ struct ContentView: View {
             Section {
                 LabeledContent("Days before consent expires", value: remainingDays.map { "\($0) days" } ?? "…")
                 LabeledContent("Vendors", value: vendorsSummary)
+                LabeledContent("Google Consent Mode", value: googleConsentMode)
                 Button("Clear consent data", role: .destructive) {
                     Axeptio.shared.clearConsentData()
                     Task { await refreshConsentValues() }
@@ -111,6 +113,8 @@ struct ContentView: View {
         case 0: "None accepted"
         default: "\(accepted) of \(consents.count) accepted"
         }
+
+        googleConsentMode = await Axeptio.shared.googleConsentMode.map(EventLog.describe) ?? "none"
     }
 
     private func initializeSDK() async {

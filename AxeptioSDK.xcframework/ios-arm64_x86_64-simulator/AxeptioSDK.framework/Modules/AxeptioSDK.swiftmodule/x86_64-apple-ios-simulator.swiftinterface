@@ -53,6 +53,9 @@ import _SwiftConcurrencyShims
   @_Concurrency.MainActor final public var tcfVendorConsents: [Swift.String : Swift.Bool] {
     get
   }
+  @_Concurrency.MainActor final public var googleConsentMode: AxeptioSDK.GoogleConsentV2? {
+    get async
+  }
   @_Concurrency.MainActor final public func getRemainingDaysForConsent(ttlDays: Swift.Int = 190) async -> Swift.Int
   @_Concurrency.MainActor final public func clearConsentData()
   @_Concurrency.MainActor final public func initialize(with configuration: AxeptioSDK.LocalConfigurationModel, permissions: [AxeptioSDK.PermissionRequest], onConsentsUpdated: (() -> Swift.Void)?, onError: @escaping (AxeptioSDK.AxeptioError) -> Swift.Void) async
@@ -67,6 +70,7 @@ import _SwiftConcurrencyShims
   @_Concurrency.MainActor final public var onPopupClosedEvent: (() -> Swift.Void)?
   @_Concurrency.MainActor final public var onConsentsUpdated: (() -> Swift.Void)?
   @_Concurrency.MainActor final public var onError: ((AxeptioSDK.AxeptioError) -> Swift.Void)?
+  @_Concurrency.MainActor final public var onGoogleConsentModeUpdate: ((AxeptioSDK.GoogleConsentV2) -> Swift.Void)?
   @_Concurrency.MainActor public init()
   @objc deinit
 }
@@ -173,6 +177,47 @@ extension AxeptioSDK.AxeptioError : Foundation.LocalizedError {
     get
   }
 }
+public enum GoogleConsentType : Swift.String, Swift.CaseIterable, Swift.Hashable, Swift.Sendable {
+  case analyticsStorage
+  case adStorage
+  case adUserData
+  case adPersonalization
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [AxeptioSDK.GoogleConsentType]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [AxeptioSDK.GoogleConsentType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum GoogleConsentStatus : Swift.String, Swift.CaseIterable, Swift.Hashable, Swift.Sendable {
+  case granted
+  case denied
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [AxeptioSDK.GoogleConsentStatus]
+  public typealias RawValue = Swift.String
+  nonisolated public static var allCases: [AxeptioSDK.GoogleConsentStatus] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct GoogleConsentV2 : Swift.Hashable, Swift.Sendable {
+  public let analyticsStorage: AxeptioSDK.GoogleConsentStatus
+  public let adStorage: AxeptioSDK.GoogleConsentStatus
+  public let adUserData: AxeptioSDK.GoogleConsentStatus
+  public let adPersonalization: AxeptioSDK.GoogleConsentStatus
+  public init(analyticsStorage: AxeptioSDK.GoogleConsentStatus, adStorage: AxeptioSDK.GoogleConsentStatus, adUserData: AxeptioSDK.GoogleConsentStatus, adPersonalization: AxeptioSDK.GoogleConsentStatus)
+  public func toMap() -> [AxeptioSDK.GoogleConsentType : AxeptioSDK.GoogleConsentStatus]
+  public static func == (a: AxeptioSDK.GoogleConsentV2, b: AxeptioSDK.GoogleConsentV2) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 public struct LocalConfigurationModel {
   public init(projectId: Swift.String, version: Swift.String, authToken: Swift.String, environment: AxeptioSDK.SDKEnvironment = .production, cookiesConfiguration: AxeptioSDK.CookieConfigurationSource)
 }
@@ -219,6 +264,7 @@ public enum SDKEnvironment : Swift.String, Swift.Sendable, Swift.Identifiable, S
 
 
 
+
 @_Concurrency.MainActor @preconcurrency public struct RootView : SwiftUICore.View {
   @_Concurrency.MainActor @preconcurrency public init(entryPoint: AxeptioSDK.RootEntryPointType)
   @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
@@ -250,6 +296,8 @@ extension AxeptioSDK.CalendarAccessLevel : Swift.Hashable {}
 extension AxeptioSDK.RootEntryPointType : Swift.Equatable {}
 extension AxeptioSDK.RootEntryPointType : Swift.Hashable {}
 extension AxeptioSDK.RootEntryPointType : Swift.RawRepresentable {}
+extension AxeptioSDK.GoogleConsentType : Swift.RawRepresentable {}
+extension AxeptioSDK.GoogleConsentStatus : Swift.RawRepresentable {}
 extension AxeptioSDK.SDKEnvironment : Swift.Equatable {}
 extension AxeptioSDK.SDKEnvironment : Swift.Hashable {}
 extension AxeptioSDK.SDKEnvironment : Swift.RawRepresentable {}
