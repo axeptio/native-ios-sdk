@@ -43,7 +43,7 @@ Add the package to your `dependencies`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/axeptio/native-ios-sdk.git", from: "1.4.0"),
+    .package(url: "https://github.com/axeptio/native-ios-sdk.git", from: "1.4.1"),
 ],
 ```
 

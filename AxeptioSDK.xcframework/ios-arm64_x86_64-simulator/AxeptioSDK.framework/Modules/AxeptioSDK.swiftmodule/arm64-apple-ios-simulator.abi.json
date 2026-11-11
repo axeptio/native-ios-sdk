@@ -8461,6 +8461,13 @@
       "value": "\"app:att:denied\""
     },
     {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Enums\/AnalyticsEventType.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3502,
+      "length": 5,
+      "value": "false"
+    },
+    {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Enums\/UsageDescriptionKey.swift",
       "kind": "StringLiteral",
       "offset": 163,
@@ -9975,14 +9982,21 @@
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Repositories\/CookieRepository.swift",
       "kind": "BooleanLiteral",
-      "offset": 8420,
+      "offset": 10415,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Repositories\/CookieRepository.swift",
       "kind": "BooleanLiteral",
-      "offset": 8887,
+      "offset": 11052,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Repositories\/CookieRepository.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11086,
       "length": 5,
       "value": "false"
     },
@@ -9998,7 +10012,7 @@
       "kind": "StringLiteral",
       "offset": 393,
       "length": 7,
-      "value": "\"1.4.0\""
+      "value": "\"1.4.1\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/AnalyticsEventQueue.swift",
@@ -10087,70 +10101,84 @@
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 918,
+      "offset": 909,
+      "length": 18,
+      "value": "\"brandsAcceptsAll\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
+      "kind": "StringLiteral",
+      "offset": 975,
       "length": 26,
       "value": "\"consentTimestampConfigId\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 985,
+      "offset": 1042,
       "length": 20,
       "value": "\"consentSubmittedAt\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 1045,
+      "offset": 1102,
       "length": 18,
       "value": "\"unsyncedConfigId\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 1101,
+      "offset": 1158,
       "length": 16,
       "value": "\"vendorConsents\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "StringLiteral",
-      "offset": 1162,
+      "offset": 1219,
       "length": 24,
       "value": "\"vendorConsentsFlowType\""
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 1722,
+      "offset": 1797,
       "length": 3,
       "value": "190"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 1772,
+      "offset": 1847,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 1777,
+      "offset": 1852,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "IntegerLiteral",
-      "offset": 1782,
+      "offset": 1857,
       "length": 2,
       "value": "24"
     },
     {
       "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
       "kind": "BooleanLiteral",
-      "offset": 3977,
+      "offset": 4195,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/native-ios-sdk-sources\/native-ios-sdk-sources\/Sources\/AxeptioSDK\/Stores\/ConsentsStore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4229,
       "length": 5,
       "value": "false"
     },
